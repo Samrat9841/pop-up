@@ -108,4 +108,5 @@ form button {
 
 .cross{
   text-align: right;
+  cursor: pointer;
 }
