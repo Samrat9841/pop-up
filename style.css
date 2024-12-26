@@ -104,9 +104,10 @@ form button {
   width: 20px;
   height: 20px;
   display: inline;
+  cursor: pointer;
 }
 
 .cross{
   text-align: right;
-  cursor: pointer;
+  
 }
