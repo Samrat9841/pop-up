@@ -3,12 +3,13 @@
   padding: 0;
 }
 
-.form-container {
+.form-container ,
+.form-container2{
   background-color: transparent;
   box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.25);
   border-radius: 1.5rem;
   text-align: center;
-  height: 25rem;
+  height: 27rem;
   width: 35rem;
   position: absolute;
   top: -150%;
@@ -21,6 +22,10 @@
               transform 20ms ease-in-out 0ms;
 }
 
+.form-container2{
+  height: 37rem;
+
+}
 .active {
   top: 50%;
   transform: translate(-50%, -50%) scale(1);
@@ -29,11 +34,13 @@
               opacity 200ms ease-in-out 0ms,
               transform 20ms ease-in-out 0ms;
 }
-.form-container h2 {
+.form-container h2,
+.form-container2 h2  {
   font-size: 45px;
   font-family: Arial, Helvetica, sans-serif;
 }
-.form-container form {
+.form-container form ,
+.form-container2 form{
   height: 85%;
   margin-top: 20px;
   text-align: left;
@@ -44,7 +51,8 @@
 }
 
 .form-element input[type="email"],
-.form-element input[type="password"] {
+.form-element input[type="password"],
+.form-element input[type="text"] {
   height: 20px;
   display: block;
   width: 90%;
@@ -55,7 +63,7 @@
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 5px;
 }
-form button {
+/* .form-container form button {
   font-family: Arial, Helvetica, sans-serif;
   display: block;
   margin-top: 20px;
@@ -69,11 +77,18 @@ form button {
   border: 1px solid #000;
   outline: none;
   transition: 0.2s;
-}
+} */
+
 .form-container button:hover {
   color: #fff;
   background-color: #000;
 }
+
+.form-container2 button:hover {
+  color: #fff;
+  background-color: #000;
+}
+
 .form-element input[type="checkbox"] {
   height: 20px;
   cursor: pointer;
@@ -84,6 +99,7 @@ form button {
 }
 
 .log-button {
+  width: 100%;
   font-family: Arial, Helvetica, sans-serif;
   display: block;
   margin-top: 20px;
@@ -99,7 +115,8 @@ form button {
   transition: 0.2s;
 }
 
-#cross{
+#cross,
+#cross2{
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -111,3 +128,132 @@ form button {
   text-align: right;
   
 }
+
+
+
+/* This is global styling */
+*{
+  margin: 0%;
+  padding: 0%;  
+  box-sizing: border-box;
+ }
+
+ button.normal{
+  font-size: 14px;
+  font-weight: 600;
+  padding: 15px 30px;
+  color: #000;
+  background-color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: 0.2s;
+ }
+
+ button.white{
+  font-size: 13px;
+  font-weight: 600;
+  padding: 11px 18px;
+  color: #fff;
+  background-color: transparent;
+  cursor: pointer;
+  border: 1px solid #fff;
+  outline: none;
+  transition: 0.2s;
+ }
+ .container{
+     width: 100%;
+     height: 100%;
+     
+ }
+ body{
+  width: 100%;
+ }
+
+
+
+   /* This is the header styling */
+
+   #Header{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 20px 80px;
+    background-color: #E3E6F3;
+       width: 100%;
+       height: 100px;
+       position: sticky;
+       top:0px;
+       z-index: 2;
+       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+   }
+   #Header img{
+      
+      width: 100px;
+      color: #000;
+   }
+   .title{
+   align-self:center;
+   text-align: right;
+   font-size: 40px;
+   color: black;
+   }
+
+/* This is the styling of nav bar */
+
+.nav-bar{
+  background-color: #E3E6F3;
+ }
+ 
+ .nav-bar .bar{
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+ }
+
+
+ .bar li{
+  list-style: none;
+  padding-left:20px;
+  
+ }
+ 
+
+ .nav-bar a{
+     text-decoration: none;
+     font-size: 18px;
+     font-weight: 700;
+     color: #1a1a1a;
+     transition: 0.1s;
+    
+ }
+ .nav-bar i{
+  transition: 0.3s;
+ }
+ .nav-bar a:hover,  
+ .nav-bar a.active{
+  color: #088178;
+  cursor: pointer;
+  border-bottom: 4px solid #088178;
+ }
+ 
+ .nav-bar a i:hover{
+  color: #088178;
+  cursor: pointer;
+ }
+
+ .nav-bar #close{
+  display: none;
+  align-items: center;
+ }
+
+ #mobile{
+  display: none;
+  align-items: center;
+ }
+ 
+ .fa-circle-user{
+  font-size: large;
+  cursor: pointer;
+ }
