@@ -41,7 +41,7 @@
 }
 .form-container form ,
 .form-container2 form{
-  height: 85%;
+  height: 75%;
   margin-top: 20px;
   text-align: left;
 }
@@ -63,21 +63,7 @@
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 5px;
 }
-/* .form-container form button {
-  font-family: Arial, Helvetica, sans-serif;
-  display: block;
-  margin-top: 20px;
-  margin-bottom: 5px;
-  font-size: 15px;
-  padding: 12px 20px;
-  color: #000;
-  background-color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  border: 1px solid #000;
-  outline: none;
-  transition: 0.2s;
-} */
+
 
 .form-container button:hover {
   color: #fff;
