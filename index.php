@@ -1,3 +1,55 @@
+<?php
+$server="localhost";
+$username="root";
+$password="";
+$database="texttologin";
+
+
+$conn =mysqli_connect($server,$username,$password,$database);
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+    $showAlert=false;
+    $showError=false;
+    $username =$_POST["name"];
+    $email=$_POST["email"];
+    $password =$_POST["password"];
+    $cpassword =$_POST["cpassword"];
+    // $exists=false;
+
+    //check wether this username exists
+    $existSql="SELECT * FROM `users` WHERE name ='$username'";
+    $result=mysqli_query($conn,$existSql);
+    $numExistRows =mysqli_num_rows($result);
+
+
+    if($numExistRows>0){
+      // $exists= true;
+      $showError=" Username already exists " ;
+
+    }
+    else{
+      // $exists= false;
+    
+
+    if(($password==$cpassword)){
+        $sql="INSERT INTO `users` ( `name`, `email`,`password`, `dt`) VALUES 
+        ('$username', `$email`,'$password', current_timestamp());";
+
+        $result =mysqli_query($conn,$sql);
+
+        if($result){
+            $showAlert=true;
+        }
+      }
+        else{
+            $showError="Passwords do not match " ;
+        }
+    
+      }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,7 +63,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <!-- Is this connected -->
+  
   <body>
     <!--This is the header-->
     <div id="Header">
@@ -92,7 +144,7 @@
       </div>
       <h2>Sign up</h2>
 
-      <form action="">
+      <form  action="index.php" method="post">
         <div class="form-element">
           <label for="name">Enter your name</label>
           <input
@@ -137,6 +189,16 @@
         <div class="link">
           <a href="#">Forgot password?</a>
         </div>
+
+        <?php
+      if($showAlert){
+        echo 'Your account is created';
+      }
+
+      if($showError){
+        echo'Error'. $showError;
+      }
+      ?>
       </form>
 
       <div class="logInLink">
