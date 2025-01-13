@@ -1,53 +1,3 @@
-<?php
-$server="localhost";
-$username="root";
-$password="";
-$database="texttologin";
-
-
-$conn =mysqli_connect($server,$username,$password,$database);
-
-if($_SERVER["REQUEST_METHOD"]=="POST"){
-    $showAlert=false;
-    $showError=false;
-    $username =$_POST["name"];
-    $email=$_POST["email"];
-    $password =$_POST["password"];
-    $cpassword =$_POST["cpassword"];
-    // $exists=false;
-
-    //check wether this username exists
-    $existSql="SELECT * FROM `users` WHERE name ='$username'";
-    $result=mysqli_query($conn,$existSql);
-    $numExistRows =mysqli_num_rows($result);
-
-
-    if($numExistRows>0){
-      // $exists= true;
-      $showError=" Username already exists " ;
-
-    }
-    else{
-      // $exists= false;
-    
-
-    if(($password==$cpassword)){
-        $sql="INSERT INTO `users` ( `name`, `email`,`password`, `dt`) VALUES 
-        ('$username', `$email`,'$password', current_timestamp());";
-
-        $result =mysqli_query($conn,$sql);
-
-        if($result){
-            $showAlert=true;
-        }
-      }
-        else{
-            $showError="Passwords do not match " ;
-        }
-    
-      }
-}
-?>
 
 
 <!DOCTYPE html>
@@ -67,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
   <body>
     <!--This is the header-->
     <div id="Header">
-      <div><img src="img/logo.png" alt="" /></div>
+      
       <div class="title">
         <h1>Ani Wears</h1>
       </div>
@@ -94,6 +44,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     </div>
     <!--This is the ending of header-->
 
+   
+
     <!-- This is the form of log in -->
     <div class="form-container">
       <div class="cross">
@@ -101,7 +53,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
       </div>
       <h2>Log in</h2>
 
-      <form action="">
+      <form action="" >
         <div class="form-element">
           <label for="email">Email</label>
           <input
@@ -144,7 +96,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
       </div>
       <h2>Sign up</h2>
 
-      <form  action="index.php" method="post">
+      <form  action="index.php" method="post" id="submitForm" >
         <div class="form-element">
           <label for="name">Enter your name</label>
           <input
@@ -185,27 +137,21 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
           />
         </div>
 
-        <button class="log-button">Signup</button>
+        <button class="log-button" id="Signup">Signup</button>
         <div class="link">
           <a href="#">Forgot password?</a>
         </div>
 
-        <?php
-      if($showAlert){
-        echo 'Your account is created';
-      }
-
-      if($showError){
-        echo'Error'. $showError;
-      }
-      ?>
+       <p id="response1"></p>
       </form>
 
       <div class="logInLink">
         <span>Have an account?</span><button id="login">Log in</button>
       </div>
+
     </div>
 
+    
     <script src="script.js"></script>
   </body>
 </html>
