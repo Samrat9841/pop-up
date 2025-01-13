@@ -53,11 +53,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
       }
         else{
             
-            echo " <script>
+            echo " 
       
-            alert('Passwords do not match ');
+          Passwords do not match 
         
-        </script> ";
+         ";
         }
     
       }
