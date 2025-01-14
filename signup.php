@@ -1,4 +1,6 @@
-<?php
+<!-- 
+
+
 $server="localhost";
 $username="root";
 $password="";
@@ -8,7 +10,7 @@ $database="texttologin";
 $conn =mysqli_connect($server,$username,$password,$database);
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-  
+  $showResult="";
     $username =$_POST["name"];
     $email=$_POST["email"];
     $password =$_POST["password"];
@@ -23,10 +25,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     if($numExistRows>0){
       // $exists= true;
+      
       // $showError=" Username already exists " ;
+      $showResult=" Username already exists " ;
       echo " <script>
       
-        alert('username already exists');
+       var result='$showResult';
+   
     
     </script> ";
 
@@ -43,25 +48,28 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         $result =mysqli_query($conn,$sql);
 
         if($result){
-           
+          // $showAlert=true;
+          $showResult="Your account is created";
             echo " <script>
       
-            alert('Your account is created');
+            var result='$showResult';
+            
         
         </script> ";
         }
       }
         else{
-            
+          // $showError="Passwords do not match " ;
+          $showResult="Passwords do not match " ;
             echo " 
-      
-          Passwords do not match 
-        
+            <script>
+         var result='$showResult';
+  
+           </script>
          ";
         }
     
       }
 }
 
-
-?>
+?> -->

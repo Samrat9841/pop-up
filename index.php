@@ -11,8 +11,12 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
-    
-    <script> function showAlert() { alert("Data entered successfully!"); } </script>
+
+    <!-- <script>
+  function showAlert(){
+    alert(result);
+  }
+</script> -->
   </head>
 
   
@@ -98,7 +102,7 @@
       </div>
       <h2>Sign up</h2>
 
-      <form method="post" id="submitForm" >
+      <form method="post"  action="index.php">
         <div class="form-element">
           <label for="name">Enter your name</label>
           <input
@@ -139,19 +143,104 @@
           />
         </div>
 
-        <button class="log-button" id="Signup">Signup</button>
+        
+        <button class="log-button" onclick="showAlert()">Signup</button>
         <div class="link">
           <a href="#">Forgot password?</a>
         </div>
 
-       <p id="response1"></p>
+       <p id="result"></p>
       </form>
 
       <div class="logInLink">
         <span>Have an account?</span><button id="login">Log in</button>
       </div>
 
+     
     </div>
+
+   
+
+
+      <?php
+
+$server="localhost";
+$username="root";
+$password="";
+$database="texttologin";
+
+
+$conn =mysqli_connect($server,$username,$password,$database);
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+  $showResult="";
+    $username =$_POST["name"];
+    $email=$_POST["email"];
+    $password =$_POST["password"];
+    $cpassword =$_POST["cpassword"];
+    // $exists=false;
+
+    //check wether this username exists
+    $existSql="SELECT * FROM `users` WHERE name ='$username'";
+    $result=mysqli_query($conn,$existSql);
+    $numExistRows =mysqli_num_rows($result);
+
+
+    if($numExistRows>0){
+      // $exists= true;
+      
+      // $showError=" Username already exists " ;
+      $showResult=" Username already exists " ;
+      echo " <script>
+      
+       var result='$showResult';
+    alert(result);
+  
+    
+    </script> ";
+
+     
+    }
+    else{
+      // $exists= false;
+    
+
+    if(($password==$cpassword)){
+        $sql="INSERT INTO `users` ( `name`, `email`,`password`, `dt`) VALUES 
+        ('$username', '$email','$password', current_timestamp());";
+
+        $result =mysqli_query($conn,$sql);
+
+        if($result){
+          // $showAlert=true;
+          $showResult="Your account is created";
+            echo " <script>
+    
+            var result='$showResult';
+                alert(result);
+        </script> ";
+        }
+      }
+        else{
+          // $showError="Passwords do not match " ;
+          $showResult="Passwords do not match " ;
+            echo " 
+            <script>
+         var result='$showResult';
+             alert(result);
+        
+           </script>
+         ";
+        }
+    
+      }
+}
+
+
+?>
+
+
+    
 
     <script src="signup.js"></script>
     <script src="script.js"></script>
