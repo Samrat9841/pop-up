@@ -159,13 +159,6 @@
      
     </div>
 
-   <!-- This is success alertForm -->
-    <div id="success">
-      <div class="cross">
-        <button id="cross3">x</button>
-      </div>
-      <p>Account created successfully</p>
-    </div>
 
 
       <?php
@@ -179,7 +172,7 @@ $database="texttologin";
 $conn =mysqli_connect($server,$username,$password,$database);
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-  // $showResult="";
+  $showResult="";
     $username =$_POST["name"];
     $email=$_POST["email"];
     $password =$_POST["password"];
@@ -191,21 +184,21 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $result=mysqli_query($conn,$existSql);
     $numExistRows =mysqli_num_rows($result);
 
-
+  
     if($numExistRows>0){
       // $exists= true;
       
       // $showError=" Username already exists " ;
-    //   $showResult=" Username already exists " ;
-    //   echo " <script>
+      $showResult=" Username already exists " ;
+      echo " <script>
       
-    //    var result='$showResult';
-    // alert(result);
+       var result='$showResult';
+    alert(result);
   
     
-    // </script> ";
+    </script> ";
 
-    echo "<p>Username already exists</p>";
+    // echo "<p>Username already exists</p>";
      
     }
     else{
@@ -220,28 +213,27 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
         if($result){
           // $showAlert=true;
-        //   $showResult="Your account is created";
-        //     echo " <script>
+          $showResult="Your account is created";
+            echo " <script>
     
-        //     var result='$showResult';
-        //         alert(result);
-        // </script> ";
+            var result='$showResult';
+                alert(result);
+        </script> ";
 
-        echo "<p>Your account is created</p>";
+        // echo "<p>Your account is created</p>";
         }
       }
         else{
           // $showError="Passwords do not match " ;
-        //   $showResult="Passwords do not match " ;
-        //     echo " 
-        //     <script>
-        //  var result='$showResult';
-        //      alert(result);
+          $showResult=" Username already exists " ;
+          echo " <script>
+          
+           var result='$showResult';
+        alert(result);
+      
         
-        //    </script>
-        //  ";
-
-        echo"<p>Passwords do not match</p>";
+        </script> ";
+        // echo"<p>Passwords do not match</p>";
 
         }
     
@@ -252,9 +244,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 ?>
 
 
-    
-
-    <script src="signup.js"></script>
-    <script src="script.js"></script>
+      <script src="script.js"></script>
   </body>
 </html>
