@@ -10,7 +10,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="stt.css" />
 
     <!-- <script>
   function showAlert(){
@@ -102,7 +102,7 @@
       </div>
       <h2>Sign up</h2>
 
-      <form method="post"  action="index.php">
+      <form method="post"  action="index.php"  >
         <div class="form-element">
           <label for="name">Enter your name</label>
           <input
@@ -144,7 +144,7 @@
         </div>
 
         
-        <button class="log-button" onclick="showAlert()">Signup</button>
+        <button class="log-button" >Signup</button>
         <div class="link">
           <a href="#">Forgot password?</a>
         </div>
@@ -159,7 +159,13 @@
      
     </div>
 
-   
+   <!-- This is success alertForm -->
+    <div id="success">
+      <div class="cross">
+        <button id="cross3">x</button>
+      </div>
+      <p>Account created successfully</p>
+    </div>
 
 
       <?php
@@ -173,7 +179,7 @@ $database="texttologin";
 $conn =mysqli_connect($server,$username,$password,$database);
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-  $showResult="";
+  // $showResult="";
     $username =$_POST["name"];
     $email=$_POST["email"];
     $password =$_POST["password"];
@@ -190,15 +196,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
       // $exists= true;
       
       // $showError=" Username already exists " ;
-      $showResult=" Username already exists " ;
-      echo " <script>
+    //   $showResult=" Username already exists " ;
+    //   echo " <script>
       
-       var result='$showResult';
-    alert(result);
+    //    var result='$showResult';
+    // alert(result);
   
     
-    </script> ";
+    // </script> ";
 
+    echo "<p>Username already exists</p>";
      
     }
     else{
@@ -213,24 +220,29 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
         if($result){
           // $showAlert=true;
-          $showResult="Your account is created";
-            echo " <script>
+        //   $showResult="Your account is created";
+        //     echo " <script>
     
-            var result='$showResult';
-                alert(result);
-        </script> ";
+        //     var result='$showResult';
+        //         alert(result);
+        // </script> ";
+
+        echo "<p>Your account is created</p>";
         }
       }
         else{
           // $showError="Passwords do not match " ;
-          $showResult="Passwords do not match " ;
-            echo " 
-            <script>
-         var result='$showResult';
-             alert(result);
+        //   $showResult="Passwords do not match " ;
+        //     echo " 
+        //     <script>
+        //  var result='$showResult';
+        //      alert(result);
         
-           </script>
-         ";
+        //    </script>
+        //  ";
+
+        echo"<p>Passwords do not match</p>";
+
         }
     
       }
