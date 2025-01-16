@@ -11,12 +11,14 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
     <link rel="stylesheet" href="stt.css" />
-
     <!-- <script>
-  function showAlert(){
-    alert(result);
-  }
-</script> -->
+      fetch('login.php')
+    
+      .then(function(data){
+        alert(data);
+      });
+    </script>
+   -->
   </head>
 
   
@@ -59,14 +61,14 @@
       </div>
       <h2>Log in</h2>
 
-      <form action="" >
-        <div class="form-element">
-          <label for="email">Email</label>
+      <form id="dataForm"  >
+      <div class="form-element">
+          <label for="name">Enter your name</label>
           <input
-            type="email"
-            id="logemail"
-            name="email"
-            placeholder="Enter your email"
+            type="text"
+            id="logname"
+            name="name"
+            placeholder="Enter your name"
           />
         </div>
 
@@ -84,7 +86,7 @@
           <input type="checkbox" id="checkbox" />
           <label for="checkbox">remember-me</label>
         </div>
-        <button class="log-button">Login</button>
+        <button class="log-button" id="logedin">Login</button>
         <div class="link">
           <a href="#">Forgot password?</a>
         </div>
@@ -93,6 +95,7 @@
       <div class="signUpLink">
         <span>Don't have an account?</span><button id="signup">Sign up</button>
       </div>
+      <p id="response1"></p>
     </div>
 
     <!-- This is the form of sign up -->
@@ -225,7 +228,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
       }
         else{
           // $showError="Passwords do not match " ;
-          $showResult=" Username already exists " ;
+          $showResult="Passwords do not match " ;
           echo " <script>
           
            var result='$showResult';
@@ -238,12 +241,41 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         }
     
       }
+
+
+     
 }
 
 
 ?>
 
 
-      <script src="script.js"></script>
+
+<!-- 
+
+$login= $_GET['$login'];
+
+if( $login){
+  echo " <script>
+            
+      var result=' Welcome';
+   alert(result);
+
+  
+   </script> ";
+}
+
+else{
+  echo " <script>
+            
+  var result=' Invalid Credentails';
+alert(result);
+
+
+</script> ";
+}
+?>  -->
+
+      <script src="scriptt.js"></script>
   </body>
 </html>
